@@ -1,0 +1,77 @@
+<div class="featurebar">
+    <div class="featurebar__container">
+        <h1 class="featurebar__title">
+            신규 웹툰 등록
+        </h1>
+    </div>
+</div>
+<main style="display: table; height: 100%;">
+    <section class="create__container" style="display: table-cell; vertical-align: middle;">
+        <div class="card__container">
+            <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
+                <input type='hidden' name='csrfmiddlewaretoken' value='wndrHURCS18IRzYOQLrOlKUYTnSiFdK6uPA6znRKaeufoI6xfc4XZZsD6KSGg1dI' />
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="id_title" name="title" type="text" required /> <label for="id_title">제목:</label>
+
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="id_author" name="author" type="text" required /> <label for="id_author">작가명:</label>
+
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="id_no" name="no" type="text" required /> <label for="id_no">에피소드 번호:</label>
+
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="create__upload">
+                            <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
+                            <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="">
+                            <label for="id_image">에피소드 이미지:</label>
+                            <span class="create__button">파일 선택</span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="create__upload">
+                            <input id="id_text" name="text" onchange="document.getElementById(&#39;text_fileinput&#39;).value = this.value;" type="file" required />
+                            <input type="text" id="text_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="">
+                            <label for="id_text">에피소드 대사:</label>
+                            <span class="create__button">파일 선택</span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s12" style="display: block; text-align: center;">
+                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action">등록</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>

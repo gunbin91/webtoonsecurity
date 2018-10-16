@@ -1,0 +1,47 @@
+<div class="featurebar">
+    <div class="featurebar__container">
+        <h1 class="featurebar__title">
+            대사 분리 데모
+        </h1>
+    </div>
+</div>
+<main style="display: table; height: 100%;">
+    <section class="create__container" style="display: table-cell; vertical-align: middle;">
+        <div class="card__container">
+            <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
+                <input type='hidden' name='csrfmiddlewaretoken' value='RElRdzkHU7uMhOsN3mDUzZDimVdYfOexP6Iw52kPckQjOXAwsNg3debXzidmQCH9' />
+
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="create__upload">
+                            <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
+                            <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="">
+                            <label for="id_image">분리할 이미지:</label>
+                            <span class="create__button">파일 선택</span>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input-field col s12" style="display: block; text-align: center;">
+                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action">시작</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<script>
+    $('#create-btn').click(function() {
+        var obj = document.getElementById("form-create");
+        if (obj.checkValidity()) {
+            $(this).attr('disabled', 'disabled');
+            obj.submit();
+        }
+    });
+
+</script>

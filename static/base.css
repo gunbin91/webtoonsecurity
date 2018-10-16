@@ -1,0 +1,119 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+html {
+    font-family: 'Nanum Gothic', '나눔 고딕', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', 'Noto Sans Light', serif;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    /*
+    font-family: "Noto Sans Light","Malgun Gothic", sans-serif;
+    font-family: 'Nanum Gothic', '나눔 고딕', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', serif !important;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'KoPub Batang', serif;
+    font-family: 'Jeju Myeongjo', serif;
+    */
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    height: 100%;
+}
+
+body {
+    font-size: inherit;
+    margin: 0px;
+    background-color: #f8f8f8;
+    font-family: 'Nanum Gothic', '나눔 고딕', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', 'Noto Sans Light', serif;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    height: 100%;
+    /*
+    font-family: "Noto Sans Light","Malgun Gothic", sans-serif;
+    font-family: 'Nanum Gothic', '나눔 고딕', '맑은 고딕', 'Malgun Gothic', '돋움', 'dotum', serif !important;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-family: 'KoPub Batang', serif;
+    font-family: 'Jeju Myeongjo', serif;
+    */
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+}
+
+nav {
+    -webkit-box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+    -webkit-transition: box-shadow .1s ease;
+    transition: box-shadow .1s ease;
+    background-color: #fff;
+    z-index: 1000;
+    width: 100%;
+    height: 40px;
+    position: fixed;
+}
+nav .container {
+    display: flex;
+    width: 950px;
+    margin: 0px auto;
+    background-color: inherit;
+    border: 0px;
+    padding: 11px 0px !important;
+}
+nav .title {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.54);
+}
+nav .container .nav-left { width: 50%; }
+nav .container .nav-right { width: 50%; text-align: right; font-size: 0.9rem;}
+nav .container .nav-right a .title { display: inline-block; }
+nav .container .nav-right a + a { margin-left: 10px; }
+
+footer {
+    min-width: 950px;
+    width: 100%; background-color: #e7e7e7; color: #3498db;
+    border-top: 1px solid #ddd;
+}
+footer .footer-description {
+    width: 950px;
+    margin: 0px auto;
+    padding: 5px 0px;
+}
+footer .footer-copyright {
+    width: 100%;
+}
+footer .container {
+    width: 950px;
+    margin: 0px auto;
+    padding: 5px 0px;
+    background-color: rgba(255, 255, 255, 0);
+    border: 0px;
+}
+footer .container a { color: #3498db; }
+footer .container a:hover { font-weight: 600; }
+footer .footer-brand-title { margin: 10px 0px; font-size: 1.3rem; }
+footer .footer-brand-description { margin: 10px 0px; display: flex; font-size: 0.9rem; }
+footer .footer-brand-description div + div { margin-left: 10px; }
+footer .footer-copyright {
+    border-top: 1px solid rgba(221, 221, 221, 0.5);
+    background-color: rgba(204, 204, 204, 0.3);
+    font-size: 0.9rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+    nav { min-width: 0px; }
+    nav .container {
+        width: calc(100% - 20px);
+        padding: 10px 0px;
+    }
+    nav .brand-description { display: none; }
+
+    footer { min-width: 0px; }
+    footer .footer-description {
+        width: 100%;
+    }
+    footer .container {
+        width: calc(100% - 20px);
+        padding: 10px 0px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+}
