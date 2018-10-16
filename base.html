@@ -73,12 +73,6 @@
 
     <script type="text/javascript">
         $("#contents").load("login.html");
-        function checkSupportsImport() {
-            console.log('import' in document.createElement('link'));
-            return 'import' in document.createElement('link');
-        }
-
-
         function pageChange(page) {
             $("#contents").load(page);
         }
