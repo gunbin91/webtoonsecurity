@@ -21,11 +21,11 @@
                     </div>
                 </a>
             </div>
-            <div class="nav-right">
+            <div class="nav-right" style="width:80%;">
                 <div class="username">
                     사용자 : <span id="sessionId"></span>
                 </div>
-                <a href="javascript:pageChange('webtoonlist.html')">
+                <a href="javascript:pageChange('webtoonlist_admin.html')">
                     <div class="title">
                         웹툰 목록
                     </div>
@@ -48,6 +48,9 @@
                         대사분리
                     </div>
                 </a>
+                <a href="javascript:logout()" style="text-decoration: none; color:black;">
+                    로그아웃
+                </a>
             </div>
         </div>
     </nav>
@@ -58,16 +61,26 @@
     </span>
 
     <script type="text/javascript">
+        
+//      임시 아이디
         $("#sessionId").html(sessionStorage.getItem('id'));
         if (window.sessionStorage) {
             if(sessionStorage.getItem('id')){
-                $("#contents").load("webtoonlist.html");
+                $("#contents").load("webtoonlist_admin.html");
             }else{
                 location.href = "index.html";
             }
         }
+        
+//        임시 페이지 체인지
         function pageChange(page) {
             $("#contents").load(page);
+        }
+        
+//        임시 로그아웃
+        function logout(){
+            sessionStorage.clear();
+            location.href="";
         }
 
     </script>

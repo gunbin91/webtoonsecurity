@@ -1,17 +1,64 @@
 <link rel="stylesheet" href="static/style.css">
 <link rel="stylesheet" href="static/form.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+
+    .column {
+        float: left;
+        width: 50%;
+        padding: 30px;
+        margin-left: 0px;
+        height:70px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+</style>
 
 <div class="featurebar">
     <div class="featurebar__container">
         <h1 class="featurebar__title">
-            전체 웹툰
+            웹툰 목록
         </h1>
     </div>
 </div>
 
 <main>
     <section>
+        <div class="row">
+            <div class="column">
+<!--                <button class="btn waves-effect waves-light" onclick="addSession();">추가</button>-->
+            </div>
+            <div class="column" style="text-align: right;">
+                <form action="">
+                    <input type="text" placeholder="웹툰명 or 작가명" style="width:50%;"/>
+                    <button class="btn waves-effect waves-light" onclick="addSession();" style="width:40px; background: powderblue;"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
         <div class="object__container">
+            <a href="/webtoon/19">
+                <div class="object__card card__container">
+                    <h2 class="object__title">
+                        총수테스트용
+                    </h2>
+                    <div class="object__author">
+                        테스트
+                    </div>
+                    <div class="object__link">
+                        에피소드 보기
+                    </div>
+                </div>
+            </a>
 
             <a href="/webtoon/19">
                 <div class="object__card card__container">
@@ -26,7 +73,21 @@
                     </div>
                 </div>
             </a>
-            
+
+            <a href="/webtoon/19">
+                <div class="object__card card__container">
+                    <h2 class="object__title">
+                        총수테스트용
+                    </h2>
+                    <div class="object__author">
+                        테스트
+                    </div>
+                    <div class="object__link">
+                        에피소드 보기
+                    </div>
+                </div>
+            </a>
+
             <a href="/webtoon/19">
                 <div class="object__card card__container">
                     <h2 class="object__title">
@@ -45,3 +106,4 @@
     </section>
 </main>
 
+<script src="static/materialize.min.js"></script>

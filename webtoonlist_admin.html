@@ -1,0 +1,162 @@
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="static/form.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- 추가버튼 및 검색바 css-->
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+
+    .column {
+        float: left;
+        width: 50%;
+        padding: 30px;
+        margin-left: 0px;
+        height: 70px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+</style>
+<!-- 패기네이션 버튼 css -->
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+
+    .pagination a.active {
+        background-color: dodgerblue;
+        color: white;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+
+</style>
+
+<div class="featurebar">
+    <div class="featurebar__container">
+        <h1 class="featurebar__title">
+            웹툰 목록
+        </h1>
+    </div>
+</div>
+
+<main>
+    <section>
+        <div class="row">
+            <div class="column">
+                <button class="btn waves-effect waves-light" onclick="pageChange('create_admin.html');">추가</button>
+            </div>
+            <div class="column" style="text-align: right;">
+                <form action="">
+                    <input type="text" placeholder="웹툰명 or 작가명" style="width:50%;" />
+                    <button class="btn waves-effect waves-light" onclick="addSession();" style="width:40px; background: powderblue;"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="object__container">
+            <a href="javascript:pageChange('episode_list.html');">
+                <div class="object__card card__container" style="text-align: center;">
+                    <div class="object__title">
+                        <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
+                    </div>
+                    <h2 class="object__title">
+                        총수
+                    </h2>
+                    <div class="object__author">
+                        정기영 / 백승훈
+                    </div>
+                </div>
+            </a>
+
+            <a href="/webtoon/19">
+                <div class="object__card card__container" style="text-align: center;">
+                    <div class="object__title">
+                        <img src="static/image/thumbnail2.jpg" alt="" style="width:100%; height:235px;" id="imgg">
+                    </div>
+                    <h2 class="object__title">
+                        향수
+                    </h2>
+                    <div class="object__author">
+                        홍길동
+                    </div>
+                </div>
+            </a>
+
+            <a href="/webtoon/19">
+                <div class="object__card card__container" style="text-align: center;">
+                    <div class="object__title">
+                        <img src="static/image/thumbnail3.jpg" alt="" style="width:100%; height:235px;" id="imgg">
+                    </div>
+                    <h2 class="object__title">
+                        윈드브레이커
+                    </h2>
+                    <div class="object__author">
+                        김바람
+                    </div>
+                </div>
+            </a>
+
+            <a href="/webtoon/19">
+                <div class="object__card card__container" style="text-align: center;">
+                    <div class="object__title">
+                        <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
+                    </div>
+                    <h2 class="object__title">
+                        총수
+                    </h2>
+                    <div class="object__author">
+                        정기영 / 백승훈
+                    </div>
+                </div>
+            </a>
+
+            <a href="/webtoon/19">
+                <div class="object__card card__container">
+                    <h2 class="object__title">
+                        총수테스트용
+                    </h2>
+                    <div class="object__author">
+                        테스트
+                    </div>
+                    <div class="object__link">
+                        에피소드 보기
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div style="width:100%">
+            <div style="display: table; margin:0 auto;">
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a href="#">1</a>
+                    <a class="active" href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="static/materialize.min.js"></script>
+<script>
+function pageChange(page){
+    $("#contents").load(page);
+}
+</script>
