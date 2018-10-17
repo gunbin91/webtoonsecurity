@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/form.css">
+
 <div class="featurebar">
     <div class="featurebar__container">
         <h1 class="featurebar__title">
@@ -9,19 +12,43 @@
     <section class="signin__container" style="display: table-cell; vertical-align: middle;">
         <div class="card__container">
             <form method="POST" id="form-create" class="signin__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
-                <input type='hidden' name='csrfmiddlewaretoken' value='Pe3syqQ4SJPe3EWGy3TWCDdU5DIy4WnkulnXBSquqqFs1DdfdkUoOuNEVJm0rVg3' />
+                <input type='hidden' name='csrfmiddlewaretoken' value='FcQeoludUSpjBJDtnPTMjSf0eTVYTGz1DEdTgOulc5LQ8SLcMgwVX7NFrgVmuu2D' />
+
+
                 <div class="row">
                     <div class="input-field col s12">
-                        <input class="notHangul" id="id_first_name" name="first_name" type="text" required /> <label for="id_first_name">사용자명 :</label>
-
+                        <input class="notHangul" id="id_first_name" name="first_name" type="text" required /> <label for="id_first_name">사용자명:</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input class="notHangul" id="pass_first_name" name="first_name" type="text" required /> <label for="id_first_name">비밀번호:</label>
                     </div>
                 </div>
+
+
                 <div class="row">
                     <div class="input-field col s12" style="display: block; text-align: center;">
-                        <button id="signup-btn" class="btn waves-effect waves-light" type="submit" name="action">로그인</button>
+<!--                        <button id="signup-btn" class="btn waves-effect waves-light" type="submit" name="action">로그인</button>-->
+                   <button id="signup-btn" class="btn waves-effect waves-light" type="submit" name="action" onclick="addSession();">로그인</button>
                     </div>
                 </div>
             </form>
         </div>
     </section>
 </main>
+
+<script src="/static/materialize.min.js"></script>
+<script type="text/javascript">
+//  임시 세션 아이디
+    var sessionValue = sessionStorage.getItem('id');
+    function addSession() {
+        var id = $("#id_first_name").val();
+        var pass = $("#pass_first_name").val();
+        if (window.sessionStorage) {
+            sessionStorage.setItem('id', id);
+            sessionStorage.setItem('pass', pass);
+            alert(id+"님 로그인 되었습니다.");
+            location.href="/index_admin.html";
+        }
+    }
+
+</script>

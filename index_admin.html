@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta name="keywords" content="limasecurity" />
     <meta name="description" content="limasecurity-description">
@@ -8,77 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>로그인</title>
-    <link rel="stylesheet" href="static/base.css">
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="stylesheet" href="static/form.css">
-    
-    <link rel="import" href="login.html">
+    <link rel="stylesheet" href="/static/base.css">
+    <script src="/static/jquery-3.3.1.min.js"></script>
 
-    <script src="static/jquery-3.3.1.min.js"></script>
-    <script src="static/materialize.min.js"></script>
 </head>
-
 <body ondragstart="return false" onselectstart="return false">
     <nav>
         <div class="container">
             <div class="nav-left">
-                <a href="">
+                <a href="/">
                     <div class="title">
-                        웹툰 보안
+                       웹툰 보안
                     </div>
                 </a>
             </div>
             <div class="nav-right">
                 <div class="username">
-
+                    사용자 : 
                 </div>
-                <!--                <a href="/webtoon/create">-->
-                <a href="javascript:pageChange('webtoonlist.html');">
+                <a href="javascript:pageChange('webtoonlist.html')">
                     <div class="title">
-                        웹툰
+                        웹툰 목록
                     </div>
                 </a>
-                <!--                <a href="/webtoon/create">-->
-                <a href="javascript:pageChange('create.html')">
+<!--                <a href="/webtoon/create">-->
+                <a href="javascript:pageChange('webtoonlist.html')">
                     <div class="title">
                         웹툰 등록
                     </div>
                 </a>
-                <!--                <a href="/webtoon/restore">-->
+<!--                <a href="/webtoon/restore">-->
                 <a href="javascript:pageChange('restore.html')">
                     <div class="title">
                         보안코드 복원
                     </div>
                 </a>
-                <!--                <a href="/webtoon/separator">-->
+<!--                <a href="/webtoon/separator">-->
                 <a href="javascript:pageChange('separator.html')">
                     <div class="title">
                         대사분리
                     </div>
                 </a>
-                <!--                <a href="/webtoon/separator">-->
-                <a href="javascript:pageChange('login.html')">
-                    <div class="title">
-                        로그인
-                    </div>
-                </a>
             </div>
         </div>
     </nav>
-
+    
     <!-- contents   -->
     <span id="contents">
         
     </span>
 
     <script type="text/javascript">
-        $("#contents").load("login.html");
+        
+        if (window.sessionStorage) {
+            if(sessionStorage.getItem('id')){
+                $("#contents").load("webtoonlist.html");
+            }else{
+                location.href = "/index.html";
+            }
+        }
         function pageChange(page) {
             $("#contents").load(page);
         }
 
     </script>
 
-</body>
-
+    </body>
 </html>
