@@ -11,66 +11,51 @@
     <script src="static/jquery-3.3.1.min.js"></script>
 
 </head>
+
 <body ondragstart="return false" onselectstart="return false">
     <nav>
         <div class="container">
             <div class="nav-left">
-                <a href="/">
+                <a href="">
                     <div class="title">
-                       웹툰 보안
+                        웹툰 보안
                     </div>
                 </a>
             </div>
             <div class="nav-right">
                 <div class="username">
-                    
+
                 </div>
                 <a href="javascript:pageChange('webtoonlist.html')">
                     <div class="title">
                         웹툰 목록
                     </div>
                 </a>
-<!--                <a href="/webtoon/create">-->
-                <a href="javascript:pageChange('create.html')">
-                    <div class="title">
-                        웹툰 등록
-                    </div>
-                </a>
-<!--                <a href="/webtoon/restore">-->
-                <a href="javascript:pageChange('restore.html')">
-                    <div class="title">
-                        보안코드 복원
-                    </div>
-                </a>
-<!--                <a href="/webtoon/separator">-->
-                <a href="javascript:pageChange('separator.html')">
-                    <div class="title">
-                        대사분리
-                    </div>
+                <a href="javascript:pageChange('login.html')" style="text-decoration: none; color:black;">
+                    로그인
                 </a>
             </div>
         </div>
     </nav>
-    
+
     <!-- contents   -->
     <span id="contents">
         
     </span>
 
     <script type="text/javascript">
-        
         if (window.sessionStorage) {
-            if(sessionStorage.getItem('id')){
-               location.href = "index_admin.html";
-            }else{
+            if (sessionStorage.getItem('id')) {
+                location.href = "index_admin.html";
+            } else {
                 $("#contents").load("login.html");
             }
         }
+
         function pageChange(page) {
             $("#contents").load(page);
         }
-
     </script>
 
-    </body>
+</body>
 </html>

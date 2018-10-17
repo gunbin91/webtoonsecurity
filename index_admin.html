@@ -15,7 +15,7 @@
     <nav>
         <div class="container">
             <div class="nav-left">
-                <a href="/">
+                <a href="">
                     <div class="title">
                        웹툰 보안
                     </div>
@@ -23,7 +23,7 @@
             </div>
             <div class="nav-right">
                 <div class="username">
-                    사용자 : 
+                    사용자 : <span id="sessionId"></span>
                 </div>
                 <a href="javascript:pageChange('webtoonlist.html')">
                     <div class="title">
@@ -58,7 +58,7 @@
     </span>
 
     <script type="text/javascript">
-        
+        $("#sessionId").html(sessionStorage.getItem('id'));
         if (window.sessionStorage) {
             if(sessionStorage.getItem('id')){
                 $("#contents").load("webtoonlist.html");
