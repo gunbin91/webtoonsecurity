@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="static/style.css">
 <link rel="stylesheet" href="static/form.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- 추가버튼 및 검색바 css-->
 <style>
@@ -57,31 +58,87 @@
     <section>
         <div class="row">
             <div class="column">
-                <button class="btn waves-effect waves-light" onclick="createWebtoon('create_admin.html');">추가</button>
+                <a class="btn waves-effect waves-light">첫회보기</a>
+<!--                <button class="btn waves-effect waves-light" onclick="pageChange('create_admin.html');">웹툰 업로드</button>-->
             </div>
             <div class="column" style="text-align: right;">
                 <form action="">
                     <input type="text" placeholder="웹툰명 or 작가명" style="width:50%;" />
-                    <button class="btn waves-effect waves-light" onclick="addSession();" style="width:40px; background: powderblue;"><i class="fa fa-search"></i></button>
+                    <button class="btn waves-effect waves-light" style="width:40px; background: powderblue;"><i class="fa fa-search"></i></button>
                 </form>
             </div>
         </div>
+
         <div class="object__container">
-            <a href="/webtoon/19">
+            <a href="javascript:pageChange('episode_detail.html')">
                 <div class="object__card card__container" style="text-align: center;">
                     <div class="object__title">
                         <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
                     </div>
                     <h2 class="object__title">
-                        총수
+                        총수 4화
                     </h2>
                     <div class="object__author">
-                        정기영 / 백승훈
+                        2018. 10. 18
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascript:pageChange('episode_detail.html')">
+                <div class="object__card card__container" style="text-align: center;">
+                    <div class="object__title">
+                        <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
+                    </div>
+                    <h2 class="object__title">
+                        총수 3화
+                    </h2>
+                    <div class="object__author">
+                        2018. 10. 13
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascript:pageChange('episode_detail.html')">
+                <div class="object__card card__container" style="text-align: center;">
+                    <div class="object__title">
+                        <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
+                    </div>
+                    <h2 class="object__title">
+                        총수 2화
+                    </h2>
+                    <div class="object__author">
+                        2018. 10. 5
+                    </div>
+                </div>
+            </a>
+
+            <a href="javascript:pageChange('episode_detail.html')">
+                <div class="object__card card__container" style="text-align: center;">
+                    <div class="object__title">
+                        <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
+                    </div>
+                    <h2 class="object__title">
+                        총수 1화
+                    </h2>
+                    <div class="object__author">
+                        2018. 9. 30
                     </div>
                 </div>
             </a>
         </div>
-        
+
+        <div class="row">
+            <div class="column">
+
+            </div>
+            <div class="column" style="text-align: right;">
+                <button class="btn waves-effect waves-light" onclick="pageChange('webtoonlist.html')">
+                <i class="fa fa-bars"></i> 웹툰목록
+                </button>
+            </div>
+        </div>
+
+
         <div style="width:100%">
             <div style="display: table; margin:0 auto;">
                 <div class="pagination">
@@ -101,7 +158,8 @@
 
 <script src="static/materialize.min.js"></script>
 <script>
-function createWebtoon(page){
-    $("#contents").load(page);
-}
+    function pageChange(page) {
+        $("#contents").load(page);
+    }
+
 </script>

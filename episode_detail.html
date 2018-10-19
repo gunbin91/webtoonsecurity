@@ -1,0 +1,301 @@
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="static/form.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+    #central-line {
+        position: fixed;
+        width: 100px;
+        height: 1px;
+        top: 50%;
+        left: 50%;
+    }
+
+    .episode__container {
+        display: table;
+        margin: 0 auto;
+    }
+
+    .episode__title-container {
+        text-align: center;
+    }
+
+    .episode__title {
+        margin: 30px 0;
+    }
+
+    .episode__script {
+        position: absolute;
+    }
+
+    .episode__stamp {
+        position: absolute;
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+
+</style>
+
+<!-- 이미지 여백 제거 -->
+<style>
+    .listimg {
+        vertical-align: top;
+        display: block;
+    }
+
+</style>
+
+<!-- 바 -->
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+
+    .column {
+        float: left;
+        width: 50%;
+        padding: 30px;
+        margin-left: 0px;
+        height: 70px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+</style>
+
+<div class="featurebar">
+    <div class="featurebar__container">
+        <h1 class="featurebar__title">
+            총수 > 1 화
+        </h1>
+    </div>
+</div>
+
+<main>
+    <section>
+        <!--  타이틀 버튼 바    -->
+<!--
+        <div class="row" style="padding:20px;">
+            <div class="column">
+                <button class="btn waves-effect waves-light" onclick="">
+                보안코드 검사</button>
+            </div>
+            <div class="column" style="text-align: right;">
+                <button class="btn waves-effect waves-light" onclick="" style="width:auto; min-width: 50px;">수정</button>
+                <button class="btn waves-effect waves-light" onclick="" style="width:auto;">이미지 다운로드</button>
+                <button class="btn waves-effect waves-light" onclick="" style="width:auto;">대사파일 다운로드</button>
+            </div>
+        </div>
+-->
+        <!--   웹툰내용     -->
+        <div id="central-line"></div>
+        <div class="episode__container">
+            <div class="episode__image-container">
+                <img src="static/image/detail/01.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/02.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/03.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/04.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/05.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/06.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/07.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/08.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/09.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/10.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/11.jpg" class="listimg">
+            </div>
+            <div class="episode__image-container">
+                <img src="static/image/detail/12.jpg" class="listimg">
+            </div>
+        </div>
+
+        <!--   목록보기 및 오류신고버튼 바     -->
+        <div class="row" style="padding:25px;">
+            <div class="column">
+
+            </div>
+            <div class="column" style="text-align: right;">
+                <button class="btn waves-effect waves-light" style="width:auto; min-width: 50px;">오류신고</button>
+                <button class="btn waves-effect waves-light" onclick="pageChange('episode_list.html');" style="width:auto;"><i class="fa fa-bars"></i> 목록보기</button>
+            </div>
+        </div>
+
+        <!--   이전화 다음화     -->
+        <div class="row" style="padding:25px;">
+            <div class="column">
+                <a href="">
+                &lt; 이전화
+                </a>
+            </div>
+            <div class="column" style="text-align: right;">
+                <a href="">
+                다음화 &gt;
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="static/jquery-3.3.1.min.js"></script>
+<script src="static/imagesloaded.pkgd.min.js"></script>
+
+<script>
+    var blocks = [];
+    var stamp_blocks_text = '{{ object.stamp_blocks }}'.replace(/&quot;/g, '\"');
+    var episode_image_obj = $('.episode__image-container > img');
+    var current_blocks_text = '';
+    var current_scripts = '';
+    var episode_container_obj = $('.episode__container');
+
+    function make_blocks() {
+        var window_height = $(window).height();
+        var episode_image_height = episode_image_obj.height();
+        var episode_image_left = episode_image_obj.offset().left;
+        var episode_image_top = episode_image_obj.offset().top;
+
+        var block_height = window_height;
+        var h = 0
+        while (h < episode_image_height) {
+            var block = {
+                top: h + episode_image_top + 1,
+                bottom: h + episode_image_top + block_height
+            }
+            blocks.push(block);
+
+            h += block_height;
+        }
+    }
+
+    function update_scripts(view_area) {
+        var selected = [];
+        for (var i = 0; i < blocks.length; i++) {
+            if ((view_area.top >= blocks[i].top) && (view_area.top <= blocks[i].bottom)) {
+                selected.push(i);
+            } else {
+                if ((view_area.bottom >= blocks[i].top) && (view_area.bottom <= blocks[i].bottom)) {
+                    selected.push(i);
+                }
+            }
+        }
+        var selected_text = '';
+        for (var i = 0; i < selected.length; i++) {
+            if (i == 0) {
+                selected_text = selected[i];
+            } else {
+                selected_text = selected_text + '-' + selected[i];
+            }
+        }
+        if (current_blocks_text != selected_text) {
+            current_blocks_text = selected_text;
+
+            var request_top = blocks[selected[0]].top;
+            var request_bottom = blocks[selected[0]].bottom;
+            if (selected.length == 2) {
+                request_bottom = blocks[selected[1]].bottom;
+            }
+
+            $.ajax({
+                url: "{% url 'webtoon:api_caption' %}?episode_id=" + {
+                    {
+                        object.id
+                    }
+                } + "&top=" + request_top + "&bottom=" + request_bottom,
+                type: "GET",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                dataType: "json",
+                success: function(result) {
+                    if (result) {
+                        current_scripts = result.data;
+                        redraw_scripts(current_scripts);
+                    }
+                }
+            });
+        }
+    }
+
+    function redraw_scripts(scripts) {
+        var episode_image_height = episode_image_obj.height();
+        var episode_image_left = episode_image_obj.offset().left;
+        var episode_image_top = episode_image_obj.offset().top;
+
+        $(".episode__script").remove();
+
+        for (var i = 0; i < scripts.length; i++) {
+            var script = scripts[i];
+            var left = script['x'] + episode_image_left;
+            var top = script['y'] + episode_image_top;
+            var width = script['width'];
+            var font_size = script['height'] - 6;
+            var tag = '<div class="episode__script" style="left:' + left + 'px; top:' + top + 'px; min-width:' + width + 'px; font-size:' + font_size + 'px;">' + script['text'] + '</div>';
+            episode_container_obj.append(tag);
+        }
+    }
+
+    function redraw_stamps() {
+        var episode_image_height = episode_image_obj.height();
+        var episode_image_left = episode_image_obj.offset().left;
+        var episode_image_top = episode_image_obj.offset().top;
+
+        $(".episode__stamp").remove();
+
+        stamp_blocks = JSON.parse(stamp_blocks_text);
+
+        for (var i = 0; i < stamp_blocks.length; i++) {
+            var block = stamp_blocks[i];
+            var left = block[0] + episode_image_left;
+            var top = block[1] + episode_image_top;
+            var tag = '<div class="episode__stamp" style="left:' + left + 'px; top:' + top + 'px; color:' + block[4] + ';">114 {{ user.first_name }}</div>';
+            episode_container_obj.append(tag);
+        }
+    }
+
+    $(window).scroll(function() {
+        var window_height = $(window).height();
+        var window_half_height = window_height / 2;
+        var central_line_obj = $('#central-line');
+        var central_line_top = central_line_obj.offset().top;
+
+        var view_area = {
+            top: central_line_top - window_half_height,
+            bottom: central_line_top + window_half_height
+        };
+        update_scripts(view_area);
+    });
+
+    $(window).resize(function() {
+        redraw_stamps();
+        redraw_scripts(current_scripts);
+    });
+
+    $('img').imagesLoaded(function() {
+        make_blocks();
+        redraw_stamps();
+        $(window).scroll();
+    });
+
+</script>

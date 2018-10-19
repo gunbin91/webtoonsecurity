@@ -48,7 +48,7 @@
 <div class="featurebar">
     <div class="featurebar__container">
         <h1 class="featurebar__title">
-            웹툰 목록
+            총수(웹툰제목)
         </h1>
     </div>
 </div>
@@ -57,7 +57,8 @@
     <section>
         <div class="row">
             <div class="column">
-<!--                <button class="btn waves-effect waves-light" onclick="pageChange('create_admin.html');">웹툰 추가</button>-->
+                <a class="btn waves-effect waves-light">첫회보기</a>
+                <button class="btn waves-effect waves-light" onclick="pageChange('create_admin.html');">웹툰 업로드</button>
             </div>
             <div class="column" style="text-align: right;">
                 <form action="">
@@ -66,77 +67,77 @@
                 </form>
             </div>
         </div>
+
         <div class="object__container">
-            <a href="javascript:pageChange('episode_list.html');">
+            <a href="javascript:pageChange('episode_detail_admin.html')">
                 <div class="object__card card__container" style="text-align: center;">
                     <div class="object__title">
                         <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
                     </div>
                     <h2 class="object__title">
-                        총수
+                        총수 4화
                     </h2>
                     <div class="object__author">
-                        정기영 / 백승훈
+                        2018. 10. 18
                     </div>
                 </div>
             </a>
 
-            <a href="javascript:pageChange('episode_list.html');">
-                <div class="object__card card__container" style="text-align: center;">
-                    <div class="object__title">
-                        <img src="static/image/thumbnail2.jpg" alt="" style="width:100%; height:235px;" id="imgg">
-                    </div>
-                    <h2 class="object__title">
-                        향수
-                    </h2>
-                    <div class="object__author">
-                        홍길동
-                    </div>
-                </div>
-            </a>
-
-            <a href="javascript:pageChange('episode_list.html');">
-                <div class="object__card card__container" style="text-align: center;">
-                    <div class="object__title">
-                        <img src="static/image/thumbnail3.jpg" alt="" style="width:100%; height:235px;" id="imgg">
-                    </div>
-                    <h2 class="object__title">
-                        윈드브레이커
-                    </h2>
-                    <div class="object__author">
-                        김바람
-                    </div>
-                </div>
-            </a>
-
-            <a href="javascript:pageChange('episode_list.html');">
+            <a href="javascript:pageChange('episode_detail_admin.html')">
                 <div class="object__card card__container" style="text-align: center;">
                     <div class="object__title">
                         <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
                     </div>
                     <h2 class="object__title">
-                        총수
+                        총수 3화
                     </h2>
                     <div class="object__author">
-                        정기영 / 백승훈
+                        2018. 10. 13
                     </div>
                 </div>
             </a>
 
-            <a href="javascript:pageChange('episode_list.html');">
-                <div class="object__card card__container">
+            <a href="javascript:pageChange('episode_detail_admin.html')">
+                <div class="object__card card__container" style="text-align: center;">
+                    <div class="object__title">
+                        <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
+                    </div>
                     <h2 class="object__title">
-                        총수테스트용
+                        총수 2화
                     </h2>
                     <div class="object__author">
-                        테스트
+                        2018. 10. 5
                     </div>
-                    <div class="object__link">
-                        에피소드 보기
+                </div>
+            </a>
+
+            <a href="javascript:pageChange('episode_detail_admin.html')">
+                <div class="object__card card__container" style="text-align: center;">
+                    <div class="object__title">
+                        <img src="static/image/thumbnail.jpg" alt="" style="width:100%; height:235px;" id="imgg">
+                    </div>
+                    <h2 class="object__title">
+                        총수 1화
+                    </h2>
+                    <div class="object__author">
+                        2018. 9. 30
                     </div>
                 </div>
             </a>
         </div>
+
+        <div class="row">
+            <div class="column">
+
+            </div>
+            <div class="column" style="text-align: right;">
+                <button class="btn waves-effect waves-light" onclick="pageChange('webtoonlist_admin.html')">
+                <i class="fa fa-bars"></i> 웹툰목록
+                </button>
+            </div>
+        </div>
+
+
         <div style="width:100%">
             <div style="display: table; margin:0 auto;">
                 <div class="pagination">
@@ -156,8 +157,8 @@
 
 <script src="static/materialize.min.js"></script>
 <script>
-function pageChange(page){
-    $("#contents").load(page);
-}
-</script>
+    function pageChange(page) {
+        $("#contents").load(page);
+    }
 
+</script>

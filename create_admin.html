@@ -1,81 +1,319 @@
 <link rel="stylesheet" href="static/style.css">
 <link rel="stylesheet" href="static/form.css">
 
+<!-- 2그리드 -->
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .col2 {
+        float: left;
+        padding: 10px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+</style>
+
+<!-- 셀렉트 css-->
+<style>
+    /*the container must be positioned relative:*/
+
+    .custom-select {
+        position: relative;
+        font-family: Arial;
+    }
+
+    .custom-select select {
+        display: none;
+        /*hide original SELECT element:*/
+    }
+
+    .select-selected {
+        background-color: DodgerBlue;
+    }
+
+    /*style the arrow inside the select element:*/
+
+    .select-selected:after {
+        position: absolute;
+        content: "";
+        top: 14px;
+        right: 10px;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-color: #fff transparent transparent transparent;
+    }
+
+    /*point the arrow upwards when the select box is open (active):*/
+
+    .select-selected.select-arrow-active:after {
+        border-color: transparent transparent #fff transparent;
+        top: 7px;
+    }
+
+    /*style the items (options), including the selected item:*/
+
+    .select-items div,
+    .select-selected {
+        color: #ffffff;
+        padding: 8px 16px;
+        border: 1px solid transparent;
+        border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    /*style items (options):*/
+
+    .select-items {
+        position: absolute;
+        background-color: DodgerBlue;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+    }
+
+    /*hide the items when the select box is closed:*/
+
+    .select-hide {
+        display: none;
+    }
+
+    .select-items div:hover,
+    .same-as-selected {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+</style>
+
 <div class="featurebar">
     <div class="featurebar__container">
         <h1 class="featurebar__title">
-            신규 웹툰 등록
+            웹툰 업로드
         </h1>
     </div>
 </div>
+
 <main style="display: table; height: 100%;">
     <section class="create__container" style="display: table-cell; vertical-align: middle;">
-        <div class="card__container">
+        <div class="row" style="text-align: left; width:80%; padding: 10px; margin:0 auto;">
+            <button class="btn waves-effect waves-light" onclick="pageChange('new_create_admin.html')">☞ 신규등록</button>
+        </div>
+
+        <div class="card__container" style="width:750px;">
             <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
                 <input type='hidden' name='csrfmiddlewaretoken' value='wndrHURCS18IRzYOQLrOlKUYTnSiFdK6uPA6znRKaeufoI6xfc4XZZsD6KSGg1dI' />
 
-
                 <div class="row">
-                    <div class="input-field col s12">
-                        <input id="id_title" name="title" type="text" required /> <label for="id_title">제목:</label>
-
+                    <div class="col2" style="width:40%;">
+                        <h2>웹툰명</h2>
                     </div>
-                </div>
-
-
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="id_author" name="author" type="text" required /> <label for="id_author">작가명:</label>
-
-                    </div>
-                </div>
-
-
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="id_no" name="no" type="text" required /> <label for="id_no">에피소드 번호:</label>
-
-                    </div>
-                </div>
-
-
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <div class="create__upload">
-                            <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
-                            <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="">
-                            <label for="id_image">에피소드 이미지:</label>
-                            <span class="create__button">파일 선택</span>
-
+                    <div class="col2" style="width:60%;">
+                        <div class="custom-select" style="width:250px;">
+                            <select>
+                                <option value="0">총수</option>
+                                <option value="1">향수</option>
+                                <option value="2">윈드브레이커</option>
+                          </select>
                         </div>
                     </div>
                 </div>
 
-
+                <div class="row">
+                    <div class="col2" style="width:40%;">
+                        <h2>작가명</h2>
+                    </div>
+                    <div class="col2" style="width:60%;">
+                        <input type="text" value="정기영 / 백승훈" style="width:250px;">
+                    </div>
+                </div>
 
                 <div class="row">
-                    <div class="input-field col s12">
-                        <div class="create__upload">
-                            <input id="id_text" name="text" onchange="document.getElementById(&#39;text_fileinput&#39;).value = this.value;" type="file" required />
-                            <input type="text" id="text_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="">
-                            <label for="id_text">에피소드 대사:</label>
-                            <span class="create__button">파일 선택</span>
+                    <div class="col2" style="width:40%;">
+                        <h2>에피소드번호</h2>
+                    </div>
+                    <div class="col2" style="width:60%;">
+                        <input type="number" value="1" style="width:15%;"> 화
+                    </div>
+                </div>
 
+                <div id="file_order">
+                    <div class="row" style="border:1px solid silver; border-radius: 5px; margin-top: 20px;">
+                        <div class="col2" style="width:40%; text-align: center; line-height:130px;">
+                            <h2 style="vertical-align: middle;">ORDER : <span>1</span></h2>
+                            <input type="hidden" id="order" value="1">
+                        </div>
+                        <div class="col2" style="width:60%; padding-right: 50px;">
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="">
+                                    <label for="id_image">에피소드 이미지:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_text" name="text" onchange="document.getElementById(&#39;text_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="text_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="">
+                                    <label for="id_text">에피소드 대사:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
                 <div class="row">
+                    <div class="col2" style="width:40%;">
+
+                    </div>
+                    <div class="col2" style="width:60%; text-align: right;">
+                        <button type="button" class="btn waves-effect waves-light" onclick="delete_order(this);">- 삭제</button>
+                        <button type="button" class="btn waves-effect waves-light" onclick="add_order();">+ 추가</button>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:60px;">
                     <div class="input-field col s12" style="display: block; text-align: center;">
-                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action">등록</button>
+                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action" onclick="alertMsg('[총수] N화를 등록하였습니다.');">등록</button>
                     </div>
                 </div>
+
             </form>
         </div>
     </section>
 </main>
 <script src="static/materialize.min.js"></script>
+
+<!-- 파일 추가/삭제 스크립트 -->
+<script>
+    var order = 1;
+
+    function delete_order(btn) {
+        $("#box_" + order).remove();
+        if (order > 1) {
+            order--;
+        }
+    }
+
+    //    파일선택박스 추가
+    function add_order() {
+        order++;
+
+        var file_box = "<div class='row' style='border:1px solid silver; border-radius: 5px; " +
+            "margin-top: 20px;' id='box_" + order + "'> <div class='col2' style='width:40%; text-align: center;" +
+            "line-height:130px;'><h2 style='vertical-align: middle;'>ORDER : <span>" + order + "</span>" +
+            "</h2><input type='hidden' id='order' value='" + order + "'></div> <div class='col2'" +
+            "style='width:60%; padding-right: 50px;'> <div class='input-field col s12'>" +
+            "<div class='create__upload'> <input id='id_image' name='image'" +
+            "onchange='document.getElementById(&#39;image_fileinput&#39;).value=this.value;'" + "type='file' required /> <input type='text' id='image_fileinput'" +
+            "class='create__fileinput' placeholder='파일이 선택되지 않았습니다.' readonly=''>" +
+            "<label for='id_image'>에피소드 이미지:</label>" +
+            "<span class='create__button'>파일 선택</span></div></div>" +
+            "<div class='input-field col s12'><div class='create__upload'>" +
+            "<input id='id_text' name='text'" +
+            "onchange='document.getElementById(&#39;text_fileinput&#39;).value = this.value;'" +
+            "type='file' required /><input type='text' id='text_fileinput'" +
+            "class='create__fileinput' placeholder='파일이 선택되지 않았습니다.' readonly=''>" +
+            "<label for='id_text'>에피소드 대사:</label> " +
+            "<span class='create__button'>파일 선택</span></div></div></div></div>";
+
+        $("#file_order").append(
+            file_box
+        );
+
+        var scrollPosition = $("#box_" + order).offset().top;
+        $('html, body').animate({
+            scrollTop: scrollPosition
+        }, 1000);
+    }
+
+</script>
+
+<script>
+    var x, i, j, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    for (i = 0; i < x.length; i++) {
+        selElmnt = x[i].getElementsByTagName("select")[0];
+        /*for each element, create a new DIV that will act as the selected item:*/
+        a = document.createElement("DIV");
+        a.setAttribute("class", "select-selected");
+        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+        x[i].appendChild(a);
+        /*for each element, create a new DIV that will contain the option list:*/
+        b = document.createElement("DIV");
+        b.setAttribute("class", "select-items select-hide");
+        for (j = 0; j < selElmnt.length; j++) {
+            /*for each option in the original select element,
+            create a new DIV that will act as an option item:*/
+            c = document.createElement("DIV");
+            c.innerHTML = selElmnt.options[j].innerHTML;
+            c.addEventListener("click", function(e) {
+                /*when an item is clicked, update the original select box,
+                and the selected item:*/
+                var y, i, k, s, h;
+                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                h = this.parentNode.previousSibling;
+                for (i = 0; i < s.length; i++) {
+                    if (s.options[i].innerHTML == this.innerHTML) {
+                        s.selectedIndex = i;
+                        h.innerHTML = this.innerHTML;
+                        y = this.parentNode.getElementsByClassName("same-as-selected");
+                        for (k = 0; k < y.length; k++) {
+                            y[k].removeAttribute("class");
+                        }
+                        this.setAttribute("class", "same-as-selected");
+                        break;
+                    }
+                }
+                h.click();
+            });
+            b.appendChild(c);
+        }
+        x[i].appendChild(b);
+        a.addEventListener("click", function(e) {
+            /*when the select box is clicked, close any other select boxes,
+            and open/close the current select box:*/
+            e.stopPropagation();
+            closeAllSelect(this);
+            this.nextSibling.classList.toggle("select-hide");
+            this.classList.toggle("select-arrow-active");
+        });
+    }
+
+    function closeAllSelect(elmnt) {
+        /*a function that will close all select boxes in the document,
+        except the current select box:*/
+        var x, y, i, arrNo = [];
+        x = document.getElementsByClassName("select-items");
+        y = document.getElementsByClassName("select-selected");
+        for (i = 0; i < y.length; i++) {
+            if (elmnt == y[i]) {
+                arrNo.push(i)
+            } else {
+                y[i].classList.remove("select-arrow-active");
+            }
+        }
+        for (i = 0; i < x.length; i++) {
+            if (arrNo.indexOf(i)) {
+                x[i].classList.add("select-hide");
+            }
+        }
+    }
+    /*if the user clicks anywhere outside the select box,
+    then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+
+</script>

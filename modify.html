@@ -1,0 +1,424 @@
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="static/form.css">
+
+<!-- 2 그리드 -->
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .col2 {
+        float: left;
+        padding: 10px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+</style>
+
+<!-- 모달박스 css-->
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* The Modal (background) */
+
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1000;
+        /* Sit on top */
+        padding-top: 30px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+
+    /* Add Animation */
+
+    @-webkit-keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+
+    @keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+
+    /* The Close Button */
+
+    .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .modal-header {
+        padding: 2px 16px;
+        background-color: darkslateblue;
+        color: white;
+    }
+
+    .modal-body {
+        padding: 2px 16px;
+    }
+
+    .modal-footer {
+        padding: 2px 16px;
+        background-color: dimgray;
+        color: white;
+    }
+
+</style>
+
+<div class="featurebar">
+    <div class="featurebar__container">
+        <h1 class="featurebar__title">
+            총수 N화 수정 페이지
+        </h1>
+    </div>
+</div>
+
+<main style="display: table; height: 100%;">
+    <section class="create__container" style="display: table-cell; vertical-align: middle;">
+
+        <div class="card__container" style="width:750px;">
+            <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
+                <input type='hidden' name='csrfmiddlewaretoken' value='wndrHURCS18IRzYOQLrOlKUYTnSiFdK6uPA6znRKaeufoI6xfc4XZZsD6KSGg1dI' />
+
+                <div class="row">
+                    <div class="col2" style="width:40%;">
+                        <h2>웹툰명</h2>
+                    </div>
+                    <div class="col2" style="width:60%;">
+                        <span>총수</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col2" style="width:40%;">
+                        <h2>작가명</h2>
+                    </div>
+                    <div class="col2" style="width:60%;">
+                        <span>정기영 / 백승훈</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col2" style="width:40%;">
+                        <h2>에피소드번호</h2>
+                    </div>
+                    <div class="col2" style="width:60%;">
+                        <span>N 화</span>
+                    </div>
+                </div>
+
+                <div id="file_order">
+                    <a href="" download style="display: none;" id="link">이미지/대사 다운로드 링크</a>
+                    
+                    <div class="row" style="border:1px solid silver; border-radius: 5px; margin-top: 20px;">
+                        <div class="col2" style="width:40%; text-align: center; line-height:40px;">
+                            <div style="vertical-align: middle;">
+                                <h2>ORDER : <span>1</span></h2>
+                                <div>
+                                    <button type="button" class="btn waves-effect waves-light" onclick="modal_view('static/image/detail/01.jpg',1)">이미지검사</button><br/>
+                                    <button type="button" class="btn waves-effect waves-light" onclick="file_down('static/image/detail/01.jpg','static/image/detail/01.json')">파일다운로드</button>
+                                </div>
+                                <input type="hidden" id="order" value="1">
+                            </div>
+                        </div>
+                        <div class="col2" style="width:60%; padding-right: 50px;">
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="" value="static/image/detail/01.jpg">
+                                    <label for="id_image">에피소드 이미지:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_text" name="text" onchange="document.getElementById(&#39;text_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="text_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="" value="static/image/detail/01.json">
+                                    <label for="id_text">에피소드 대사:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="border:1px solid silver; border-radius: 5px; margin-top: 20px;" id="box_2">
+                        <div class="col2" style="width:40%; text-align: center; line-height:40px;">
+                            <div style="vertical-align: middle;">
+                                <h2>ORDER : <span>2</span></h2>
+                                <div>
+                                    <button type="button" class="btn waves-effect waves-light" onclick="modal_view('static/image/detail/02.jpg',2)">이미지검사</button><br/>
+                                    <button type="button" class="btn waves-effect waves-light" onclick="file_down('static/image/detail/02.jpg','static/image/detail/02.json')">파일다운로드</button>
+                                </div>
+                                <input type="hidden" id="order" value="1">
+                            </div>
+                        </div>
+                        <div class="col2" style="width:60%; padding-right: 50px;">
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="" value="static/image/detail/02.jpg">
+                                    <label for="id_image">에피소드 이미지:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_text" name="text" onchange="document.getElementById(&#39;text_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="text_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="" value="static/image/detail/02.json">
+                                    <label for="id_text">에피소드 대사:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="border:1px solid silver; border-radius: 5px; margin-top: 20px;" id="box_3">
+                        <div class="col2" style="width:40%; text-align: center; line-height:40px;">
+                            <div style="vertical-align: middle;">
+                                <h2>ORDER : <span>3</span></h2>
+                                <div>
+                                    <button type="button" class="btn waves-effect waves-light" onclick="modal_view('static/image/detail/03.jpg',3)">이미지검사</button><br/>
+                                    <button type="button" class="btn waves-effect waves-light" onclick="file_down('static/image/detail/03.jpg','static/image/detail/03.json')">파일다운로드</button>
+                                </div>
+                                <input type="hidden" id="order" value="1">
+                            </div>
+                        </div>
+                        <div class="col2" style="width:60%; padding-right: 50px;">
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="" value="static/image/detail/03.jpg">
+                                    <label for="id_image">에피소드 이미지:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_text" name="text" onchange="document.getElementById(&#39;text_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="text_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="" value="static/image/detail/03.json">
+                                    <label for="id_text">에피소드 대사:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="border:1px solid silver; border-radius: 5px; margin-top: 20px;" id="box_4">
+                        <div class="col2" style="width:40%; text-align: center; line-height:40px;">
+                            <div style="vertical-align: middle;">
+                                <h2>ORDER : <span>4</span></h2>
+                                <div>
+                                    <button type="button" class="btn waves-effect waves-light" onclick="modal_view('static/image/detail/04.jpg',4)">이미지검사</button><br/>
+                                    <button type="button" class="btn waves-effect waves-light" onclick="file_down('static/image/detail/04.jpg','static/image/detail/04.json')">파일다운로드</button>
+                                </div>
+                                <input type="hidden" id="order" value="1">
+                            </div>
+                        </div>
+                        <div class="col2" style="width:60%; padding-right: 50px;">
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="" value="static/image/detail/04.jpg">
+                                    <label for="id_image">에피소드 이미지:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
+                            <div class="input-field col s12">
+                                <div class="create__upload">
+                                    <input id="id_text" name="text" onchange="document.getElementById(&#39;text_fileinput&#39;).value = this.value;" type="file" required />
+                                    <input type="text" id="text_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="" value="static/image/detail/04.json">
+                                    <label for="id_text">에피소드 대사:</label>
+                                    <span class="create__button">파일 선택</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col2" style="width:40%;">
+
+                    </div>
+                    <div class="col2" style="width:60%; text-align: right;">
+                        <button type="button" class="btn waves-effect waves-light" onclick="delete_order(this);">- 삭제</button>
+                        <button type="button" class="btn waves-effect waves-light" onclick="add_order();">+ 추가</button>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top:60px;">
+                    <div class="input-field col s12" style="display: block; text-align: center;">
+                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action" onclick="alertMsg('[총수] N화가 수정되었습니다.');">수정</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <!--        모달박스 -->
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header" style="height: 40px;">
+                    <span class="close">&times;</span>
+                    <h1 id="modal_header" style="color:white;">Modal Header</h1>
+                </div>
+                <div class="modal-body" style="height:650px; overflow-y: scroll;">
+                    <img id="modal_img" alt="" style="width:100%;">
+                </div>
+                <!--
+                <div class="modal-footer">
+                    <h3>Modal Footer</h3>
+                </div>
+-->
+            </div>
+        </div>
+
+    </section>
+</main>
+
+
+<script src="static/materialize.min.js"></script>
+
+<!-- 파일 추가/삭제 스크립트 -->
+<script>
+//    해당 웹툰 마지막 order
+    var order = 4;
+
+    function delete_order(btn) {
+        $("#box_" + order).remove();
+        if (order > 1) {
+            order--;
+        }
+    }
+
+    //    파일선택박스 추가
+    function add_order() {
+        order++;
+
+        var file_box = "<div class='row' style='border:1px solid silver; border-radius: 5px; " +
+            "margin-top: 20px;' id='box_" + order + "'> <div class='col2' style='width:40%; text-align: center;" +
+            "line-height:130px;'><h2 style='vertical-align: middle;'>ORDER : <span>" + order + "</span>" +
+            "</h2><input type='hidden' id='order' value='" + order + "'></div> <div class='col2'" +
+            "style='width:60%; padding-right: 50px;'> <div class='input-field col s12'>" +
+            "<div class='create__upload'> <input id='id_image' name='image'" +
+            "onchange='document.getElementById(&#39;image_fileinput&#39;).value=this.value;'" + "type='file' required /> <input type='text' id='image_fileinput'" +
+            "class='create__fileinput' placeholder='파일이 선택되지 않았습니다.' readonly=''>" +
+            "<label for='id_image'>에피소드 이미지:</label>" +
+            "<span class='create__button'>파일 선택</span></div></div>" +
+            "<div class='input-field col s12'><div class='create__upload'>" +
+            "<input id='id_text' name='text'" +
+            "onchange='document.getElementById(&#39;text_fileinput&#39;).value = this.value;'" +
+            "type='file' required /><input type='text' id='text_fileinput'" +
+            "class='create__fileinput' placeholder='파일이 선택되지 않았습니다.' readonly=''>" +
+            "<label for='id_text'>에피소드 대사:</label> " +
+            "<span class='create__button'>파일 선택</span></div></div></div></div>";
+
+        $("#file_order").append(
+            file_box
+        );
+
+        var scrollPosition = $("#box_" + order).offset().top;
+        $('html, body').animate({
+            scrollTop: scrollPosition
+        }, 1000);
+    }
+
+    //    파일 다운로드 
+    function file_down(img, json) {
+        $("#link").attr("href", img);
+        $("#link").get(0).click();
+
+        $("#link").attr("href", json);
+        $("#link").get(0).click();
+    }
+
+    //    모달박스스크립트
+    var modal = document.getElementById('myModal');
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function modal_view(src, or) {
+        $("#modal_header").html("ORDER : " + or + " 이미지 파일 검사");
+        $("#modal_img").attr("src", src);
+        modal.style.display = "block";
+    }
+
+</script>

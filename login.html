@@ -27,24 +27,65 @@
 
                 <div class="row">
                     <div class="input-field col s12" style="display: block; text-align: center;">
-<!--                        <button id="signup-btn" class="btn waves-effect waves-light" type="submit" name="action">로그인</button>-->
-                   <button id="signup-btn" class="btn waves-effect waves-light" type="submit" name="action" onclick="addSession();">로그인</button>
+                        <!--                        <button id="signup-btn" class="btn waves-effect waves-light" type="submit" name="action">로그인</button>-->
+                        <button id="signup-btn" class="btn waves-effect waves-light" type="submit" name="action" onclick="addSession();">로그인</button>
                     </div>
                 </div>
             </form>
+        </div>
+
+        <!-- 회원가입, 아이디/비밀번호찾기 컬럼css -->
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            /* Create three equal columns that floats next to each other */
+
+            .column {
+                float: left;
+                width: 30%;
+                padding: 10px;
+                font-size: 10px;
+                padding-top: 15px;
+                text-align: center;
+            }
+
+            /* Clear floats after the columns */
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+        </style>
+        <div class="row" style="margin:0 auto; width:43%;">
+            <div class="column">
+                <a href="">회원가입</a>
+            </div>
+            <div class="column" style="width:5%;"> | </div>
+            <div class="column">
+                <a href="">아이디찾기</a>
+            </div>
+            <div class="column" style="width:5%;"> | </div>
+            <div class="column">
+                <a href="">비밀번호찾기</a>
+            </div>
         </div>
     </section>
 </main>
 
 <script src="static/materialize.min.js"></script>
 <script type="text/javascript">
-//  임시 세션 아이디
+    //  임시 세션 아이디
     var sessionValue = sessionStorage.getItem('id');
+
     function addSession() {
         var id = $("#id_first_name").val();
         sessionStorage.setItem('id', id);
-        alert(id+"님 로그인 되었습니다.");
-        location.href="index_admin.html";
+        alert(id + "님 로그인 되었습니다.");
+        location.href = "index_admin.html";
     }
 
 </script>
