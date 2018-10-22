@@ -118,11 +118,11 @@
                     </div>
                     <div class="col2" style="width:60%;">
                         <div class="custom-select" style="width:250px;">
-                            <select>
+                            <select id="se">
                                 <option value="0">총수</option>
                                 <option value="1">향수</option>
                                 <option value="2">윈드브레이커</option>
-                          </select>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                         <h2>작가명</h2>
                     </div>
                     <div class="col2" style="width:60%;">
-                        <input type="text" value="정기영 / 백승훈" style="width:250px;">
+                        <input id="auth" type="text" value="정기영 / 백승훈" style="width:250px;" readonly >
                     </div>
                 </div>
 
@@ -141,7 +141,7 @@
                         <h2>에피소드번호</h2>
                     </div>
                     <div class="col2" style="width:60%;">
-                        <input type="number" value="1" style="width:15%;"> 화
+                        <input id="num" type="number" value="1" style="width:15%;" readonly> 화
                     </div>
                 </div>
 
@@ -290,6 +290,17 @@
             closeAllSelect(this);
             this.nextSibling.classList.toggle("select-hide");
             this.classList.toggle("select-arrow-active");
+//          웹툰 선택시 작가/에피소드 자동입력
+            if($("#se").val() == 0){
+                $("#auth").attr("value","정기영 / 백승훈");
+                $("#num").attr("value", "8");
+            }else if($("#se").val() == 1){
+                $("#auth").attr("value", "홍길동");
+                $("#num").attr("value", "12");
+            }else if($("#se").val() == 2){
+                $("#auth").attr("value", "김바람");
+                $("#num").attr("value", "5");
+            }
         });
     }
 
