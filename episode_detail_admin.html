@@ -43,11 +43,6 @@
         display: block;
     }
 
-    .inverter {
-        -webkit-filter: invert(100%);
-        filter: hue-rotate(100%);
-    }
-
 </style>
 
 <!-- 웹툰 상단 관리자 버튼바 -->
@@ -126,49 +121,61 @@
 
         <div class="row" style="width:76%; margin: 0 auto; display: none;" id="security_code_alert">
             <div class="alert">
-<!--                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>-->
+                <!--                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>-->
                 <strong>보안코드개수: </strong> <span>N</span>개
             </div>
         </div>
-        
+
         <!--   웹툰내용     -->
         <div id="central-line"></div>
         <div class="episode__container">
             <div class="episode__image-container">
-                <img src="static/image/detail/01.jpg" class="listimg">
+                <img src="static/image/detail/01.png" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="10000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/02.jpg" class="listimg">
+                <img src="static/image/detail/02.png" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="10000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/03.jpg" class="listimg">
+                <img src="static/image/detail/03.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/04.jpg" class="listimg">
+                <img src="static/image/detail/04.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/05.jpg" class="listimg">
+                <img src="static/image/detail/05.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/06.jpg" class="listimg">
+                <img src="static/image/detail/06.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/07.jpg" class="listimg">
+                <img src="static/image/detail/07.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/08.jpg" class="listimg">
+                <img src="static/image/detail/08.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/09.jpg" class="listimg">
+                <img src="static/image/detail/09.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/10.jpg" class="listimg">
+                <img src="static/image/detail/10.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/11.jpg" class="listimg">
+                <img src="static/image/detail/11.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
             <div class="episode__image-container">
-                <img src="static/image/detail/12.jpg" class="listimg">
+                <img src="static/image/detail/12.jpg" class="listimg" onload="canvas_view(this);">
+                <canvas width="1000px" height="1000px;"></canvas>
             </div>
         </div>
 
@@ -204,42 +211,70 @@
 
 <script>
     var se_flag = false;
+    
+//    보안코드검사 클릭 시 canvas 뷰
     function security_check() {
-        if(se_flag == false){
-            $("img").addClass("inverter");
-            $("#security_code_alert").css("display","block");
+        if (se_flag == false) {
+            $("#security_code_alert").css("display", "block");
             se_flag = true;
-            i=0;
-        }else{
-            $("img").removeClass("inverter");
-            $("#security_code_alert").css("display","none");
+            $("canvas").css("display","block");
+            $(".listimg").css("display","none");
+        } else {
+            $("canvas").css("display","none");
+            $(".listimg").css("display","block");
+            $("#security_code_alert").css("display", "none");
             se_flag = false;
         }
     }
     
-//    이미지 다운로드
-    function img_download(){
-        for(var i=1; i<5; i++){
-            if(i<=10){
-                $("#img_link").attr("href","static/image/detail/0"+i+".jpg");
-            }else{
-                $("#img_link").attr("href","static/image/detail/"+i+".jpg");
+//    컨버스에 반전이미지 셋팅
+    function canvas_view(imageObj){
+        var canvas = imageObj.nextSibling.nextSibling;
+        canvas.height = imageObj.height;
+        canvas.width = imageObj.width;
+        var ctx= canvas.getContext("2d");
+
+        ctx.drawImage(imageObj, 0, 0);
+        var id= ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+        for (var i = 0; i < id.data.length; i += 4) {
+            if ( id.data[i] + id.data[i+1] + id.data[i+2] == 0 ){
+                id.data[i] = 255;
+                id.data[i+1] = 165;
+                id.data[i+2] = 0;
+            }
+            
+        }
+        
+        // redraw your altered data on the canvas.
+        ctx.putImageData(id, 0, 0);
+        $("canvas").css("display","none");
+    }
+
+    //    이미지 다운로드
+    function img_download() {
+        for (var i = 1; i < 5; i++) {
+            if (i <= 10) {
+                $("#img_link").attr("href", "static/image/detail/0" + i + ".jpg");
+            } else {
+                $("#img_link").attr("href", "static/image/detail/" + i + ".jpg");
             }
             $("#img_link").get(0).click();
         }
     }
-    
-//    대사 다운로드
-    function json_download(){
-        for(var i=1; i<5; i++){
-            if(i<=10){
-                $("#json_link").attr("href","static/image/detail/0"+i+".json");
-            }else{
-                $("#json_link").attr("href","static/image/detail/"+i+".json");
+
+    //    대사 다운로드
+    function json_download() {
+        for (var i = 1; i < 5; i++) {
+            if (i <= 10) {
+                $("#json_link").attr("href", "static/image/detail/0" + i + ".json");
+            } else {
+                $("#json_link").attr("href", "static/image/detail/" + i + ".json");
             }
             $("#json_link").get(0).click();
         }
     }
+
 
 </script>
 
