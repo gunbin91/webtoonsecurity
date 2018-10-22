@@ -4,25 +4,25 @@
 <div class="featurebar">
     <div class="featurebar__container">
         <h1 class="featurebar__title">
-            대사 분리
+            대사 분리 파일 목록
         </h1>
     </div>
 </div>
 <main style="display: table; height: 90%;">
     <section class="create__container" style="display: table-cell; vertical-align: middle;">
-        <div class="card__container" style="width: 60%;">
+        <div class="card__container" style="width: 90%;">
             <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
                 <input type='hidden' name='csrfmiddlewaretoken' value='RElRdzkHU7uMhOsN3mDUzZDimVdYfOexP6Iw52kPckQjOXAwsNg3debXzidmQCH9' />
 
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <div class="create__upload">
-                            <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
-                            <input type="text" id="image_fileinput" class="create__fileinput" style="margin-top:25px;" placeholder="업로드 할 파일을 선택해 주세요." readonly="">
-                            <label for="id_image" style="margin:-25px 0px;font-size:1rem;">분리할 이미지</label>
-                            <span class="create__button" style="top:25px;">파일 선택</span>
-
+                        <div class="total-file-download">
+                            <input type="checkbox" name="chk_info" value="#" style="width:30px;height:30px;">
+                            <div class="pre-img">
+                                <img src="./static/img/one.jpg" alt="">
+                            </div>
+                            <p class="file-name">파일명.png</p>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,8 @@
 
                 <div class="row">
                     <div class="input-field col s12" style="display: block; text-align: right;">
-                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action" style="height:40px;">시작</button>
+                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action" style="height:40px;">전체 파일 다운로드</button>
+                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action" style="height:40px;">삭제</button>
                     </div>
                 </div>
             </form>
