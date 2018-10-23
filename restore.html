@@ -1,0 +1,145 @@
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="static/form.css">
+<link rel="stylesheet" href="static/loaders.css">
+
+<div class="featurebar">
+    <div class="featurebar__container">
+        <h1 class="featurebar__title">
+            보안코드 복원
+        </h1>
+    </div>
+</div>
+<main>
+    <section>
+        <div class="restore__container">
+            <div class="bar_container">
+                <div id="main_container">
+                    <div id="pbar" class="progress-pie-chart" data-percent="0">
+                        <div class="ppc-progress">
+                            <div class="ppc-progress-fill"></div>
+                        </div>
+                        <div class="ppc-percents">
+                            <div class="pcc-percents-wrapper">
+                                <span>%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <progress style="display: none" id="progress_bar" value="0" max="100"></progress>
+                    <div class="loader-inner ball-pulse" style="margin: 30px; text-align: center;">
+                        <div style="background-color: #81CE97;"></div>
+                        <div style="background-color: #81CE97;"></div>
+                        <div style="background-color: #81CE97;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="object__container">
+            <a target="n" href="">
+                <div class="object__card card__container">
+                    <div class="object__card-thumbnail" style="background-image: url('static/image/thumbnail.jpg');"></div>
+                    <div class="object__link">크게 보기</div>
+                </div>
+            </a>
+            
+            <a target="n" href="">
+                <div class="object__card card__container">
+                    <div class="object__card-thumbnail" style="background-image: url('static/image/thumbnail.jpg');"></div>
+                    <div class="object__link">크게 보기</div>
+                </div>
+            </a>
+            
+            <a target="n" href="">
+                <div class="object__card card__container">
+                    <div class="object__card-thumbnail" style="background-image: url('static/image/thumbnail.jpg');"></div>
+                    <div class="object__link">크게 보기</div>
+                </div>
+            </a>
+            
+            <a target="n" href="">
+                <div class="object__card card__container">
+                    <div class="object__card-thumbnail" style="background-image: url('static/image/thumbnail.jpg');"></div>
+                    <div class="object__link">크게 보기</div>
+                </div>
+            </a>
+            
+            <a target="n" href="">
+                <div class="object__card card__container">
+                    <div class="object__card-thumbnail" style="background-image: url('static/image/thumbnail.jpg');"></div>
+                    <div class="object__link">크게 보기</div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+</main>
+
+
+<script src="/static/jquery-3.3.1.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var object_container = $('.object__container');
+        var progressbar = $('#progress_bar');
+        max = progressbar.attr('max');
+        time = (1000 / max) * 5;
+        //value = progressbar.val();
+
+        var loading = function(value) {
+            addValue = progressbar.val(value);
+
+            $('.progress-value').html(value + '%');
+            var $ppc = $('.progress-pie-chart'),
+                deg = 360 * value / 100;
+            if (value > 50) {
+                $ppc.addClass('gt-50');
+            }
+
+            $('.ppc-progress-fill').css('transform', 'rotate(' + deg + 'deg)');
+            $('.ppc-percents span').html(value + '%');
+
+            if (value == max) {
+                clearInterval(animate);
+            }
+        };
+
+        loading(0);
+
+        var restore = function(id, no) {
+            var url = "/webtoon/api/restore/7777/8888";
+            url = url.replace('7777', id);
+            url = url.replace('8888', no);
+
+            $.ajax({
+                url: url,
+                type: "GET",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                dataType: "json",
+                success: function(result) {
+                    if (result) {
+                        console.log(result);
+                        loading(Math.round(no / 7.65));
+
+                        var data = result['data'];
+                        var next_no = data['next_no'];
+
+                        if (result['code'] == 0) {
+                            var restore_image_url = data['url'];
+                            console.log(restore_image_url);
+                            var card_tag = '<a target="n" href="' + restore_image_url + '"><div class="object__card card__container"><div class="object__card-thumbnail" style="background-image: url(' + restore_image_url + ');"></div><div class="object__link">크게 보기</div></div></a>';
+                            console.log(card_tag);
+                            object_container.append(card_tag);
+                        }
+
+                        if (next_no != 0) {
+                            restore(id, next_no);
+                        }
+                    }
+                }
+            });
+        };
+
+        restore(486, 0);
+    });
+
+</script>

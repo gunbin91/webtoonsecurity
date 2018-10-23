@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="static/style.css">
 <link rel="stylesheet" href="static/form.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="static/w3.css">
+<link rel="stylesheet" href="static/restore.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +10,43 @@ function onClick(element) {
   document.getElementById("img01").src = element.src;
   document.getElementById("modal01").style.display = "block";
 }
+</script>
+<style>
+#myProgress {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #ddd;
+}
+
+#myBar {
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  background-color: #4CAF50;
+}
+
+#label {
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+</style>
+<script>
+    window.onload = function() {
+          var elem = document.getElementById("myBar");
+          var width = 10;
+          var id = setInterval(frame, 25);
+          function frame() {
+            if (width >= 100) {
+              clearInterval(id);
+            } else {
+              width++;
+              elem.style.width = width + '%';
+              document.getElementById("label").innerHTML = width * 1  + '%';
+            }
+        }
+    }
 </script>
 
 <div class="featurebar">
@@ -26,64 +62,60 @@ function onClick(element) {
             <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
                 <input type='hidden' name='csrfmiddlewaretoken' value='vyiwVwHVZsclZdfUT4BIThV2PVR7scWot0FbNZH3hFySwmnDiveRxwtH2iRv30p0' />
 
-
                 <div class="row">
                     <div class="input-field col s12" style="border:1px solid #038607;padding: 20px 20px 10px 20px;margin-bottom:20px;">
                         <div class="create__upload">
                             <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" style="right:16%;width:80%" type="file" required />
                             <input type="text" id="image_fileinput" class="create__fileinput" placeholder=" 업로드 할 파일을 선택해 주세요." readonly="" style="font-size:1.2rem;margin-top: 25px;width: 86% !important;">
-                            <label for="id_image" style="padding:20px;font-size: 1.2rem;">복원할 이미지</label>
+                            <label for="id_image" style="padding:25px;font-size: 1.3rem;">복원할 이미지</label>
                             <button class="create__button" style="font-size:1rem;top:45px;right:130px;">파일 선택</button>
                             <button id="create-btn" class="create__button" type="submit" name="action" style="font-size:1rem;top:45px;right:20px;">복원 시작</button>
                         </div>
 
                     </div>
-                    <div class="status">
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                                100%
-                            </div>
+                    <div id="myProgress">
+                        <div id="myBar">
+                            <div id="label">10%</div>
                         </div>
                     </div>
                     <div class="webtoon_img">
-                        <div class="w3-row-padding">
-                          <div class="w3-container w3-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="w3-hover-opacity">
+                        <div class="hm-row-padding">
+                          <div class="hm-container hm-third">
+                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
                           </div>
-                          <div class="w3-container w3-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="w3-hover-opacity">
+                          <div class="hm-container hm-third">
+                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
                           </div>
-                          <div class="w3-container w3-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="w3-hover-opacity">
+                          <div class="hm-container hm-third">
+                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
                           </div>
-                           <div class="w3-container w3-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="w3-hover-opacity">
+                           <div class="hm-container hm-third">
+                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
                           </div>
                         </div>
-                       <div class="w3-row-padding">
-                          <div class="w3-container w3-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="w3-hover-opacity">
+                       <div class="hm-row-padding">
+                          <div class="hm-container hm-third">
+                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
                           </div>
-                          <div class="w3-container w3-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="w3-hover-opacity">
+                          <div class="hm-container hm-third">
+                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
                           </div>
-                          <div class="w3-container w3-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="w3-hover-opacity">
+                          <div class="hm-container hm-third">
+                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
                           </div>
-                           <div class="w3-container w3-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="w3-hover-opacity">
+                           <div class="hm-container hm-third">
+                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
                           </div>
                         </div>
 
-                        <div id="modal01" class="w3-modal" onclick="this.style.display='none'">
-                          <span class="w3-closebtn w3-hover-red w3-text-white w3-xxlarge w3-container w3-display-topright">&times;</span>
-                          <div class="w3-modal-content w3-animate-zoom">
-                              <img id="img01" style="width:100%;height:500px;padding:10px 10px 0px 10px;">
-                              <div class="file-down-button" style="width:50%;margin:0 auto;padding:10px;">
+                        <div id="modal01" class="hm-modal" onclick="this.style.display='none'">
+                          <div class="hm-hover-opacity" style="position: absolute;right:0;top:0;font-size:50px;padding:20px;cursor:pointer;color:#fff;">&times;</div>
+                          <div class="hm-modal-content hm-animate-zoom">
+                              <img id="img01" style="width:96%;height:500px;padding:2%;margin:0 auto;">
+                              <div class="file-down-button" style="width:50%;margin:0 auto;padding: 0px 0px 2% 0px;">
                                   <button class="btn file-down" type="submit" name="action" style="width:100%;height:50px;">파일 다운로드</button>
                               </div>
                           </div>
-
                         </div>
                     </div>
                     <button class="btn file-down" type="submit" name="action" style="position:relative;float:right;width:150px;height:50px;top:15px;right:20px;">
@@ -95,4 +127,5 @@ function onClick(element) {
     </section>
 
 </main>
+
 <script src="static/materialize.min.js"></script>

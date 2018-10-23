@@ -1,27 +1,28 @@
 <link rel="stylesheet" href="static/style.css">
 <link rel="stylesheet" href="static/form.css">
-<meta charset="UTF-8">
+
+
 <div class="featurebar">
     <div class="featurebar__container">
         <h1 class="featurebar__title">
-            대사 분리
+            대사 분리 데모
         </h1>
     </div>
 </div>
-<main style="display: table; height: 90%;">
+<main style="display: table; height: 100%;">
     <section class="create__container" style="display: table-cell; vertical-align: middle;">
-        <div class="card__container" style="width: 60%;">
+        <div class="card__container">
             <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
-                <input type='hidden' name='csrfmiddlewaretoken' value='RElRdzkHU7uMhOsN3mDUzZDimVdYfOexP6Iw52kPckQjOXAwsNg3debXzidmQCH9' />
+                <input type='hidden' name='csrfmiddlewaretoken' value='QdusezjBQ6M9RfYAYiGYmBsWe1dm1sPlTnMWHWPb9aWgEdKNzDzNkrVJ5Nj2LRWN' />
 
 
                 <div class="row">
                     <div class="input-field col s12">
                         <div class="create__upload">
-                            <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required />
-                            <input type="text" id="image_fileinput" class="create__fileinput" style="margin-top:25px;" placeholder="업로드 할 파일을 선택해 주세요." readonly="">
-                            <label for="id_image" style="margin:-25px 0px;font-size:1rem;">분리할 이미지</label>
-                            <span class="create__button" style="top:25px;">파일 선택</span>
+                            <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required multiple/>
+                            <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="">
+                            <label for="id_image">분리할 이미지:</label>
+                            <span class="create__button">파일 선택</span>
 
                         </div>
                     </div>
@@ -29,8 +30,9 @@
 
 
                 <div class="row">
-                    <div class="input-field col s12" style="display: block; text-align: right;">
-                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action" style="height:40px;">시작</button>
+                    <div class="input-field col s12" style="display: block; text-align: center;">
+<!--                        <button id="create-btn" class="btn waves-effect waves-light" type="submit" name="action">시작</button>-->
+                   <button class="btn waves-effect waves-light" type="button" onclick="pageChange('separator_list_admin.html')">시작</button>
                     </div>
                 </div>
             </form>
@@ -38,7 +40,10 @@
     </section>
 </main>
 
-<script src="static/materialize.min.js"></script>
+
+<script src="/static/jquery-3.3.1.min.js"></script>
+
+<script src="/static/materialize.min.js"></script>
 <script>
     $('#create-btn').click(function() {
         var obj = document.getElementById("form-create");

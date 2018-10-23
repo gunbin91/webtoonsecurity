@@ -1,0 +1,237 @@
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="static/form.css">
+
+<!--4그리드-->
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create four equal columns that floats next to each other */
+
+    .column {
+        float: left;
+        width: 25%;
+        padding: 10px;
+        height: 200px;
+        line-height: 180px;
+    }
+
+    .column>* {
+        vertical-align: middle;
+        margin: 0 auto;
+    }
+
+    /* Clear floats after the columns */
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+</style>
+
+<!--체크박스-->
+<style>
+    /* The container */
+
+    .check_container {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+
+    .check_container input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+    /* Create a custom checkbox */
+
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+
+    .check_container:hover input~.checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+
+    .check_container input:checked~.checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+
+    .check_container input:checked~.checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+
+    .check_container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+</style>
+
+<div class="featurebar">
+    <div class="featurebar__container">
+        <h1 class="featurebar__title">
+            대사 분리 파일 리스트
+        </h1>
+    </div>
+</div>
+
+<main style="display: table; height: 100%;">
+    <section class="create__container" style="display: table-cell; vertical-align: middle;">
+        <div class="row" style="text-align: left; width:85%; margin:0 auto;">
+            <label class="check_container">
+                     전체선택
+                      <input type="checkbox" checked="checked" onchange="box_control(this);" name="filecheck">
+                      <span class="checkmark"></span>
+                    </label>
+        </div>
+
+        <div class="card__container" style="width:800px; padding:10px; margin:20px auto; border: 1px solid silver;">
+            <div class="row">
+                <div class="column" style="width:10%">
+                    <label class="check_container" style="margin-top: 130%;">
+                      <input type="checkbox" checked="checked" class="cbox" value="02.jpg/02.json">
+                      <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="column" style="width:40%">
+                    <img src="static/image/detail/02.jpg" alt="" style="height:100%; width:100%;">
+                </div>
+                <div class="column" style="width:30%">
+                    <div style="margin-top:30%;">
+                        <p style="font-size: 25px;">02.jpg</p>
+                        <p style="color: gray">추출된 대사 : N 개</p>
+                    </div>
+                </div>
+                <div class="column" style="width:20%">
+                    <button type="button" class="btn waves-effect waves-light">상세보기</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card__container" style="width:800px; padding:10px; margin:20px auto; border: 1px solid silver;">
+            <div class="row">
+                <div class="column" style="width:10%">
+                    <label class="check_container" style="margin-top: 130%;">
+                      <input type="checkbox" checked="checked" class="cbox" value="03.jpg/03.json" name="filecheck">
+                      <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="column" style="width:40%">
+                    <img src="static/image/detail/03.jpg" alt="" style="height:100%; width:100%;">
+                </div>
+                <div class="column" style="width:30%">
+                    <div style="margin-top:30%;">
+                        <p style="font-size: 25px;">03.jpg</p>
+                        <p style="color: gray">추출된 대사 : N 개</p>
+                    </div>
+                </div>
+                <div class="column" style="width:20%">
+                    <button type="button" class="btn waves-effect waves-light">상세보기</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="card__container" style="width:800px; padding:10px; margin:20px auto; border: 1px solid silver;">
+            <div class="row">
+                <div class="column" style="width:10%">
+                    <label class="check_container" style="margin-top: 130%;">
+                      <input type="checkbox" checked="checked" class="cbox" value="04.jpg/04.json" name="filecheck">
+                      <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="column" style="width:40%">
+                    <img src="static/image/detail/04.jpg" alt="" style="height:100%; width:100%;">
+                </div>
+                <div class="column" style="width:30%">
+                    <div style="margin-top:30%;">
+                        <p style="font-size: 25px;">04.jpg</p>
+                        <p style="color: gray">추출된 대사 : N 개</p>
+                    </div>
+                </div>
+                <div class="column" style="width:20%">
+                    <button type="button" class="btn waves-effect waves-light">상세보기</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="width:85%; margin:0 auto; height:100px;">
+            <div style="float:left; width:0%; text-align: left;">
+             
+            </div>
+            <div style="float:left; width:100%; text-align: right;">
+                <button type="button" class="btn waves-effect waves-light" style="width:auto;" onclick="check_down();">체크파일 다운로드</button>
+            </div>
+        </div>
+
+        <a href="" download style="display: none;" id="download_link"></a>
+    </section>
+</main>
+
+<script>
+    function box_control(box) {
+        if (box.checked == true) {
+            $(".cbox").prop("checked", true);
+        } else {
+            $(".cbox").prop("checked", false);
+        }
+    }
+
+    function check_down() {
+        for (var i = 0; i < $(".cbox").length; i++) {
+            if ($(".cbox")[i].checked == true) {
+                var str = $(".cbox")[i].value;
+                var filename = str.split("/");
+                $("#download_link").attr("href", "static/image/detail/" + filename[0]);
+                $("#download_link").get(0).click();
+                $("#download_link").attr("href", "static/image/detail/" + filename[1]);
+                $("#download_link").get(0).click();
+            }
+        }
+    }
+
+</script>
