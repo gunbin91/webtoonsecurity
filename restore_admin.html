@@ -21,7 +21,7 @@ function onClick(element) {
 
 #myBar {
   position: absolute;
-  width: 10%;
+  width: 0%;
   height: 100%;
   background-color: #4CAF50;
 }
@@ -33,19 +33,32 @@ function onClick(element) {
 }
 </style>
 <script>
-    window.onload = function() {
-          var elem = document.getElementById("myBar");
-          var width = 10;
-          var id = setInterval(frame, 25);
-          function frame() {
-            if (width >= 100) {
-              clearInterval(id);
-            } else {
-              width++;
-              elem.style.width = width + '%';
-              document.getElementById("label").innerHTML = width * 1  + '%';
+//    window.onload = function() {
+//          var elem = document.getElementById("myBar");
+//          var width = 10;
+//          var id = setInterval(frame, 25);
+//          function frame() {
+//            if (width >= 100) {
+//              clearInterval(id);
+//            } else {
+//              width++;
+//              elem.style.width = width + '%';
+//              document.getElementById("label").innerHTML = width * 1  + '%';
+//            }
+//        }
+//    }
+    
+    function progress(){
+        var i=0;
+        var id = setInterval(function(){
+            i++;
+            $("#myBar").css("width",i+"%");
+            $("#label").html(i+"%");
+            if(i>=100){
+                clearInterval(id);
+                alert("보안코드 복원을 완료하였습니다.");
             }
-        }
+        },10);
     }
 </script>
 
@@ -69,13 +82,13 @@ function onClick(element) {
                             <input type="text" id="image_fileinput" class="create__fileinput" placeholder=" 업로드 할 파일을 선택해 주세요." readonly="" style="font-size:1.2rem;margin-top: 25px;width: 86% !important;">
                             <label for="id_image" style="padding:25px;font-size: 1.3rem;">복원할 이미지</label>
                             <button class="create__button" style="font-size:1rem;top:45px;right:130px;">파일 선택</button>
-                            <button id="create-btn" class="create__button" type="submit" name="action" style="font-size:1rem;top:45px;right:20px;">복원 시작</button>
+                            <button id="create-btn" class="create__button" type="button" name="action" style="font-size:1rem;top:45px;right:20px;" onclick="progress();">복원 시작</button>
                         </div>
 
                     </div>
                     <div id="myProgress">
                         <div id="myBar">
-                            <div id="label">10%</div>
+                            <div id="label">0%</div>
                         </div>
                     </div>
                     <div class="webtoon_img">

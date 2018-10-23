@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="static/base.css">
+<link rel="stylesheet" href="static/style.css">
+<link rel="stylesheet" href="static/form.css">
+<link rel="stylesheet" href="static/separator_003.css">
+<meta charset="UTF-8">
+<style>
+    .lines{
+        font-size: 20px;
+        border: 1px solid blue;
+        border-radius: 5px;
+        padding: 5px;
+        width: auto;
+        overflow: inherit;
+    }
+</style>
+<div class="featurebar">
+    <div class="featurebar__container" style="width:80%;">
+        <h1 class="featurebar__title">
+            대사 분리(목록 CLICK)
+        </h1>
+    </div>
+</div>
+<main style="display:table;height:90%;width:95%;">
+    <section class="create__container" style="display: table-cell; vertical-align: middle;">
+        <div class="card__container" style="width:95%;padding:20px;font-size:1.5rem;">
+            <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
+                <input type='hidden' name='csrfmiddlewaretoken' value='RElRdzkHU7uMhOsN3mDUzZDimVdYfOexP6Iw52kPckQjOXAwsNg3debXzidmQCH9' />
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="title-name">
+                            <p>원본</p>
+                            <p>분리 된 이미지</p>
+                            <p>분리 된 대사</p>
+                        </div>
+                        <div class="sep-list">
+                            <div class="sep-img">
+                                <img src="static/image/detail/02.jpg" alt="#">
+                            </div>
+                            <div class="sep-img" style="height:450px;">
+                                <img src="static/image/detail/02.jpg" alt="#">
+                            </div>
+                            <div class="sep-text" style="overflow: auto;">
+                            <p class="lines">
+                            별 것도 아닌 놈인데 괜히 쫄았나? 별 것도 아닌 놈인데 괜히 쫄았나? 별 것도 아닌 놈인데 괜히 쫄았나?
+                            </p>
+                            <p class="lines">
+                            이젠 새로운 세계다
+                            </p>
+                            <p class="lines">
+                            아니
+                            </p>
+                            <p class="lines">
+                            이젠 새로운 세계다
+                            </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row" style="width:95%; margin:0 auto; padding:25px; height:50px;">
+            <div style="float:left; width:50%; text-align: left;">
+                <button class="btn">목록으로</button>
+            </div>
+            <div style="float:left; width:50%; text-align: right;">
+                <button class="btn" style="width:auto;">이미지 다운로드</button>
+                <button class="btn" style="width:auto;">대사파일 다운로드</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="static/materialize.min.js"></script>
