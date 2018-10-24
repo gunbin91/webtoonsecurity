@@ -232,6 +232,38 @@
     }
 
 </style>
+
+<!--모달 스크롤바 css-->
+<style>
+    /* width */
+
+    div::-webkit-scrollbar {
+        width: 25px;
+    }
+
+    /* Track */
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+/*        border-radius: 10px;*/
+    }
+
+    /* Handle */
+
+    ::-webkit-scrollbar-thumb {
+        background: red;
+/*        border-radius: 10px;*/
+    }
+
+    /* Handle on hover */
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #b30000;
+    }
+
+</style>
+
+
 <div class="featurebar">
     <div class="featurebar__container">
         <h1 class="featurebar__title">
@@ -242,7 +274,7 @@
 
 <main style="display: table; height: 100%;">
     <section class="create__container" style="display: table-cell; vertical-align: middle;">
-        <div class="row" style="text-align: left; width:85%; margin:0 auto;">
+        <div class="row" style="text-align: left; width:85%; margin:0 auto; padding-left:22px;">
             <label class="check_container">
                      전체선택
                       <input type="checkbox" checked="checked" onchange="box_control(this);" name="filecheck">

@@ -8,61 +8,48 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script>
-function onClick(element) {
-  document.getElementById("img01").src = element.src;
-  document.getElementById("modal01").style.display = "block";
-}
+    function onClick(element) {
+        document.getElementById("img01").src = element.src;
+        document.getElementById("modal01").style.display = "block";
+    }
+
 </script>
 <style>
-#myProgress {
-  position: relative;
-  width: 100%;
-  height: 30px;
-  background-color: #ddd;
-}
-
-#myBar {
-  position: absolute;
-  width: 0%;
-  height: 100%;
-  background-color: #4CAF50;
-}
-
-#label {
-  text-align: center;
-  line-height: 30px;
-  color: white;
-}
-</style>
-<script>
-//    window.onload = function() {
-//          var elem = document.getElementById("myBar");
-//          var width = 10;
-//          var id = setInterval(frame, 25);
-//          function frame() {
-//            if (width >= 100) {
-//              clearInterval(id);
-//            } else {
-//              width++;
-//              elem.style.width = width + '%';
-//              document.getElementById("label").innerHTML = width * 1  + '%';
-//            }
-//        }
-//    }
-    
-    function progress(){
-        var i=0;
-        var id = setInterval(function(){
-            i++;
-            $("#myBar").css("width",i+"%");
-            $("#label").html(i+"%");
-            if(i>=100){
-                clearInterval(id);
-                alert("보안코드 복원을 완료하였습니다.");
-            }
-        },10);
+    #myProgress {
+        position: relative;
+        width: 100%;
+        height: 30px;
+        background-color: #ddd;
     }
-</script>
+
+    #myBar {
+        position: absolute;
+        width: 10%;
+        height: 100%;
+        background-color: cadetblue;
+    }
+
+    #label {
+        text-align: center;
+        line-height: 30px;
+        color: white;
+    }
+
+</style>
+
+<!-- 2그리드 -->
+<style>
+    .col2 {
+        float: left;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+</style>
 
 <div class="featurebar">
     <div class="featurebar__container">
@@ -74,9 +61,13 @@ function onClick(element) {
 <main style="display: table; height: 100%;">
     <section class="create__container" style="display: table-cell; vertical-align: middle;">
         <div class="card__container" style="width:95%;margin:0 auto;padding: 50px;">
-            <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
-                <input type='hidden' name='csrfmiddlewaretoken' value='vyiwVwHVZsclZdfUT4BIThV2PVR7scWot0FbNZH3hFySwmnDiveRxwtH2iRv30p0' />
 
+            <div style="border: 1px solid silver; border-radius: 5px; padding:40px; width:85%; margin:0 auto;">
+
+                <form method="POST" id="form-create" class="create__form create-form" enctype="multipart/form-data" style="width: 100%; margin: 0 auto;">
+                    <input type='hidden' name='csrfmiddlewaretoken' value='vyiwVwHVZsclZdfUT4BIThV2PVR7scWot0FbNZH3hFySwmnDiveRxwtH2iRv30p0' />
+
+                    <!--
                 <div class="row">
                     <div class="input-field col s12" style="border:1px solid #038607;padding: 20px 20px 10px 20px;margin-bottom:20px;">
                         <div class="create__upload">
@@ -88,59 +79,91 @@ function onClick(element) {
                         </div>
 
                     </div>
-                    <div id="myProgress">
-                        <div id="myBar">
-                            <div id="label">0%</div>
-                        </div>
-                    </div>
-                    <div class="webtoon_img">
-                        <div class="hm-row-padding">
-                          <div class="hm-container hm-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
-                          </div>
-                          <div class="hm-container hm-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
-                          </div>
-                          <div class="hm-container hm-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
-                          </div>
-                           <div class="hm-container hm-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
-                          </div>
-                        </div>
-                       <div class="hm-row-padding">
-                          <div class="hm-container hm-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
-                          </div>
-                          <div class="hm-container hm-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
-                          </div>
-                          <div class="hm-container hm-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
-                          </div>
-                           <div class="hm-container hm-third">
-                            <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
-                          </div>
-                        </div>
-
-                        <div id="modal01" class="hm-modal" onclick="this.style.display='none'">
-                          <div class="hm-hover-opacity" style="position: absolute;right:0;top:0;font-size:50px;padding:20px;cursor:pointer;color:#fff;">&times;</div>
-                          <div class="hm-modal-content hm-animate-zoom">
-                              <img id="img01" style="width:96%;height:500px;padding:2%;margin:0 auto;">
-                              <div class="file-down-button" style="width:50%;margin:0 auto;padding: 0px 0px 2% 0px;">
-                                  <button class="btn file-down" type="submit" name="action" style="width:100%;height:50px;"><i class="fa fa-download"></i> 파일 다운로드</button>
-                              </div>
-                          </div>
-                        </div>
-                    </div>
-                    <button class="btn file-down" type="submit" name="action" style="position:relative;float:right;width:150px;height:50px;top:15px;right:20px;">
-                        <i class="fa fa-download"></i> 전체 파일 다운로드
-                    </button>
                 </div>
-            </form>
+-->
+
+                    <div class="row">
+                        <div class="input-field col s12" style="width:95%; margin:0 auto;">
+                            <div class="create__upload">
+                                <input id="id_image" name="image" onchange="document.getElementById(&#39;image_fileinput&#39;).value = this.value;" type="file" required multiple/>
+                                <input type="text" id="image_fileinput" class="create__fileinput" placeholder="파일이 선택되지 않았습니다." readonly="">
+                                <label for="id_image">분리할 이미지:</label>
+                                <span class="create__button">파일 선택</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="row" style="margin:0 auto; width:95%;">
+                    <div class="col2" style="width:84%">
+                        <div id="myProgress">
+                            <div id="myBar">
+                                <div style="padding-left:15px;">
+                                    <span id="loader"> </span>
+                                    <span id="label"> 0% </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col2" style="float:right;">
+                        <button class="btn" onclick="progress();">시작</button>
+                    </div>
+                </div>
+            </div>
+            <div class="webtoon_img">
+                <div class="hm-row-padding">
+                    <div class="hm-container hm-third">
+                        <img src="./static/img/one.jpg" onclick="onClick(this)" style="width:100%;cursor:pointer;" class="hm-hover-opacity">
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="modal01" class="hm-modal" onclick="this.style.display='none'">
+                <div class="hm-hover-opacity" style="position: absolute;right:0;top:0;font-size:50px;padding:20px;cursor:pointer;color:#fff;">&times;</div>
+                <div class="hm-modal-content hm-animate-zoom">
+                    <img id="img01" style="width:96%;height:500px;padding:2%;margin:0 auto;">
+                    <div class="file-down-button" style="width:50%;margin:0 auto;padding: 0px 0px 2% 0px;">
+                        <button class="btn file-down" type="submit" name="action" style="width:100%;height:40px;"><i class="fa fa-download"></i> 복원이미지 다운로드</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="row" style="margin:0 auto; padding:25px; height:50px;">
+            <div style="float:left; width:0%; text-align: left;">
+
+            </div>
+            <div style="float:left; width:100%; text-align: right;">
+                <button class="btn" style="width:auto;"><i class="fa fa-download"></i> 전체 다운로드</button>
+            </div>
         </div>
     </section>
-
 </main>
 
 <script src="static/materialize.min.js"></script>
+
+<script>
+    function progress() {
+        $("#loader").html("<i class='fa fa-spinner fa-spin' style='color:white;'></i>");
+        var i = 10;
+        var id = setInterval(function() {
+            i++;
+            $("#myBar").css("width", i + "%");
+            $("#label").html(i + " %");
+            if (i >= 100) {
+                clearInterval(id);
+                $("#loader").html("");
+                alert("보안코드 복원을 완료하였습니다.");
+            }
+            if (i % 10 == 0) {
+                $(".hm-row-padding").append(
+                    "<div class='hm-container hm-third'>" +
+                    "<img src='./static/img/one.jpg' onclick='onClick(this)'" + "style='width:100%;cursor:pointer;' class='hm-hover-opacity'></div>"
+                )
+            }
+        }, 100);
+    }
+
+</script>
