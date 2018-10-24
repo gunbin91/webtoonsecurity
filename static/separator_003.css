@@ -7,19 +7,19 @@
 .title-name > p:nth-child(1) {
     padding: 10px;
     text-align: left;
-    width: 35%
+    width: 40%
 }
 
 .title-name > p:nth-child(2) {
     padding: 10px;
     text-align: left;
-    width: 35%
+    width: 40%
 }
 
 .title-name > p:nth-child(3) {
     padding: 10px;
     text-align: left;
-    width: 30%
+    width: 35%
 }
 
 .sep-list {
@@ -34,7 +34,7 @@
 }
 
 .sep-img {
-    width: 35%;
+    width: 40%;
     padding: 10px;
     height: 450px;
     overflow-y: scroll;
@@ -42,7 +42,7 @@
 }
 
 .sep-text {
-    width: 30%;
+    width: 35%;
     padding: 10px;
     height: 450px;
     overflow-y: scroll;
