@@ -132,7 +132,7 @@
                         <h2>작가명</h2>
                     </div>
                     <div class="col2" style="width:60%;">
-                        <input id="auth" type="text" value="정기영 / 백승훈" style="width:250px;" readonly >
+                        <input id="auth" type="text" value="정기영 / 백승훈" style="width:250px;" readonly>
                     </div>
                 </div>
 
@@ -290,14 +290,14 @@
             closeAllSelect(this);
             this.nextSibling.classList.toggle("select-hide");
             this.classList.toggle("select-arrow-active");
-//          웹툰 선택시 작가/에피소드 자동입력
-            if($("#se").val() == 0){
-                $("#auth").attr("value","정기영 / 백승훈");
+            //          웹툰 선택시 작가/에피소드 자동입력
+            if ($("#se").val() == 0) {
+                $("#auth").attr("value", "정기영 / 백승훈");
                 $("#num").attr("value", "8");
-            }else if($("#se").val() == 1){
+            } else if ($("#se").val() == 1) {
                 $("#auth").attr("value", "홍길동");
                 $("#num").attr("value", "12");
-            }else if($("#se").val() == 2){
+            } else if ($("#se").val() == 2) {
                 $("#auth").attr("value", "김바람");
                 $("#num").attr("value", "5");
             }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta name="keywords" content="limasecurity" />
     <meta name="description" content="limasecurity-description">
@@ -11,13 +12,14 @@
     <script src="static/jquery-3.3.1.min.js"></script>
 
 </head>
+
 <body ondragstart="return false" onselectstart="return false">
     <nav>
         <div class="container">
             <div class="nav-left">
                 <a href="">
                     <div class="title">
-                       웹툰 보안
+                        웹툰 보안
                     </div>
                 </a>
             </div>
@@ -30,19 +32,19 @@
                         웹툰 목록
                     </div>
                 </a>
-<!--                <a href="/webtoon/create">-->
+                <!--                <a href="/webtoon/create">-->
                 <a href="javascript:pageChange('create_admin.html')">
                     <div class="title">
                         웹툰 등록
                     </div>
                 </a>
-<!--                <a href="/webtoon/restore">-->
+                <!--                <a href="/webtoon/restore">-->
                 <a href="javascript:pageChange('restore_admin.html')">
                     <div class="title">
                         보안코드 복원
                     </div>
                 </a>
-<!--                <a href="/webtoon/separator">-->
+                <!--                <a href="/webtoon/separator">-->
                 <a href="javascript:pageChange('separator_admin.html')">
                     <div class="title">
                         대사분리
@@ -54,39 +56,40 @@
             </div>
         </div>
     </nav>
-    
+
     <!-- contents   -->
     <span id="contents">
         
     </span>
 
     <script type="text/javascript">
-        
-//      임시 아이디
+        //      임시 아이디
         $("#sessionId").html(sessionStorage.getItem('id'));
         if (window.sessionStorage) {
-            if(sessionStorage.getItem('id')){
+            if (sessionStorage.getItem('id')) {
                 $("#contents").load("webtoonlist_admin.html");
-            }else{
+            } else {
                 location.href = "index.html";
             }
         }
-        
-//        임시 페이지 체인지
+
+        //        임시 페이지 체인지
         function pageChange(page) {
             $("#contents").load(page);
         }
-        
-//        임시 로그아웃
-        function logout(){
+
+        //        임시 로그아웃
+        function logout() {
             sessionStorage.clear();
-            location.href="";
+            location.href = "";
         }
-        
-        function alertMsg(msg){
+
+        function alertMsg(msg) {
             alert(msg);
         }
+
     </script>
 
-    </body>
+</body>
+
 </html>
